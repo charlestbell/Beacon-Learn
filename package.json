@@ -1,37 +1,64 @@
 {
-  "name": "beacon-learn",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "eslint-plugin-jest-dom": "^3.9.2",
-    "eslint-plugin-testing-library": "^5.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
-  },
+  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject",
+    "test": "jest --watch --silent=false",
+    "test log": "jest --watch",
+    "debug test": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "@expo/vector-icons": "^12.0.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-regular-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-native-fontawesome": "^0.2.7",
+    "@react-native-async-storage/async-storage": "~1.15.0",
+    "@react-native-community/netinfo": "6.0.2",
+    "@react-navigation/native": "^6.0.2",
+    "@react-navigation/stack": "^6.0.7",
+    "@testing-library/dom": "^8.11.1",
+    "@testing-library/react-native": "^8.0.0",
+    "eslint-plugin-testing-library": "^5.0.0",
+    "expo": "^43.0.0",
+    "expo-app-loading": "~1.2.1",
+    "expo-asset": "~8.4.3",
+    "expo-font": "~10.0.3",
+    "expo-sqlite": "~10.0.3",
+    "expo-status-bar": "~1.1.0",
+    "expo-updates": "~0.10.15",
+    "jest": "26.6.3",
+    "react": "17.0.1",
+    "react-dom": "^17.0.2",
+    "react-merge-refs": "^1.1.0",
+    "react-native": "0.64.3",
+    "react-native-gesture-handler": "~1.10.2",
+    "react-native-get-random-values": "~1.7.0",
+    "react-native-reanimated": "~2.2.0",
+    "react-native-safe-area-context": "3.3.2",
+    "react-native-screens": "~3.8.0",
+    "react-native-svg": "12.1.1",
+    "react-native-web": "^0.17.5",
+    "react-redux": "^7.2.5",
+    "redux": "^4.1.1",
+    "redux-thunk": "^2.3.0",
+    "ts-jest": "^27.0.7",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@testing-library/dom": "^8.10.1",
-    "@testing-library/user-event": "^12.8.3"
+    "@babel/core": "^7.12.9",
+    "@testing-library/jest-native": "^4.0.2",
+    "eslint": "^8.1.0",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-native": "^3.11.0",
+    "jest-expo": "^43.0.0",
+    "redux-devtools-extension": "^2.13.9"
+  },
+  "private": true,
+  "resolutions": {
+    "react-native/@jest/create-cache-key-function": "^27.0.1"
   }
 }
