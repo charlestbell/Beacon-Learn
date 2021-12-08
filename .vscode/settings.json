@@ -1,0 +1,15 @@
+{
+  "eslint.options": {
+    "overrideConfigFile": ".eslintrc.json"
+  },
+  "eslint.validate": ["javascript", "javascriptreact"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "search.exclude": {
+    "**/node_modules": false
+  },
+  "search.useIgnoreFiles": false
+}
