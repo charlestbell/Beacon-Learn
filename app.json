@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Sharp Shooter Logbook",
-    "slug": "brog-trip-journal",
-    "owner": "blue-ridge-overland-gear",
+    "name": "Beacon Learn",
+    "slug": "beacon-learn",
+    "owner": "7samurai",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -14,9 +14,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
