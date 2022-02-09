@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import * as utils from './VotingScreenUtils';
 
 const TopicTile = ({ topic, changeBeforeVote }) => {
   return (
@@ -33,9 +34,9 @@ const VotingScreen = () => {
             'something@something.com',
           ],
         },
-        afterVotes: {
-          Aperture: { total: 1, addresses: ['original@original.com'] },
-        },
+      },
+      afterVotes: {
+        Aperture: { total: 1, addresses: ['original@original.com'] },
       },
     },
     { name: 'Aperture', beforeVotes: {}, afterVotes: {} },
@@ -43,41 +44,6 @@ const VotingScreen = () => {
     { name: 'Tripods', beforeVotes: {}, afterVotes: {} },
     { name: 'What is photography?', beforeVotes: {}, afterVotes: {} },
   ]);
-
-  const changeBeforeVote = topicName => {
-    console.log('TOPIC NAME: ', topicName);
-    const isName = element => element.name === topicName;
-    const topicIndex = topics.findIndex(isName);
-    console.log('TOPIC INDEX ', topicIndex);
-    console.log('FOUND TOPIC ', topics[topicIndex]);
-    const previousTopicName = topics[topicIndex - 1].name;
-    console.log('PREV TOPIC NAME ', previousTopicName);
-
-    let updatedTopics = [...topics];
-
-    // console.log('UPDATED TOPICS ', updatedTopics);
-
-    console.log(
-      'PREV TOPIC NAME EXIST? ',
-      !!updatedTopics[topicIndex].beforeVotes[previousTopicName]
-    );
-
-    if (!updatedTopics[topicIndex].beforeVotes[previousTopicName]) {
-      console.log('TOPIC VOTES NOT EXIST');
-      updatedTopics[topicIndex] = {
-        ...updatedTopics[topicIndex],
-        beforeVotes: { [previousTopicName]: { total: 1, addresses: [] } },
-      };
-    } else {
-      const newVoteCount =
-        topics[topicIndex].beforeVotes[previousTopicName].total + 1;
-      console.log('NEW VOTE COUNT ', newVoteCount);
-      updatedTopics[topicIndex].beforeVotes[previousTopicName].total =
-        newVoteCount;
-    }
-    setTopics(updatedTopics);
-    console.log('UPDATED TOPICS ', updatedTopics);
-  };
 
   return (
     <View style={styles.container}>
@@ -87,7 +53,9 @@ const VotingScreen = () => {
           <TopicTile
             topic={topic}
             key={i}
-            changeBeforeVote={changeBeforeVote}
+            changeBeforeVote={() =>
+              utils.changeBeforeVote(topic.name, topics, setTopics)
+            }
           />
         ))}
       </View>
