@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import * as utils from './VotingScreenUtils';
 
-const TopicTile = ({ topic, changeBeforeVote }) => {
+const TopicTile = ({ topic, changeBeforeVote, changeAfterVote }) => {
   return (
     <View style={styles.TTContainer}>
       <Text style={styles.TTTitleText}>{topic.name} </Text>
@@ -13,7 +13,9 @@ const TopicTile = ({ topic, changeBeforeVote }) => {
         <TouchableOpacity onPress={changeBeforeVote.bind(this, topic.name)}>
           <FontAwesomeIcon icon={faArrowLeft} />
         </TouchableOpacity>
-        <FontAwesomeIcon icon={faArrowRight} />
+        <TouchableOpacity onPress={changeAfterVote.bind(this, topic.name)}>
+          <FontAwesomeIcon icon={faArrowRight} />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -22,27 +24,15 @@ const TopicTile = ({ topic, changeBeforeVote }) => {
 const VotingScreen = () => {
   const [topicsOrder, setTopicsOrder] = useState([]);
   const [topics, setTopics] = useState([
+    { name: 'What is photography?', beforeVotes: {}, afterVotes: {} },
     {
       name: 'ISO',
-      beforeVotes: {
-        Aperture: {
-          total: 4,
-          addresses: [
-            'charlestbell@gmail.com',
-            'test@test.com',
-            'sample@sample.com',
-            'something@something.com',
-          ],
-        },
-      },
-      afterVotes: {
-        Aperture: { total: 1, addresses: ['original@original.com'] },
-      },
+      beforeVotes: {},
+      afterVotes: {},
     },
-    { name: 'Aperture', beforeVotes: {}, afterVotes: {} },
     { name: 'Shutter Speed', beforeVotes: {}, afterVotes: {} },
+    { name: 'Aperture', beforeVotes: {}, afterVotes: {} },
     { name: 'Tripods', beforeVotes: {}, afterVotes: {} },
-    { name: 'What is photography?', beforeVotes: {}, afterVotes: {} },
   ]);
 
   return (
@@ -56,6 +46,9 @@ const VotingScreen = () => {
             changeBeforeVote={() =>
               utils.changeBeforeVote(topic.name, topics, setTopics)
             }
+            changeAfterVote={() => {
+              utils.changeAfterVote(topic.name, topics, setTopics);
+            }}
           />
         ))}
       </View>
@@ -96,4 +89,5 @@ const styles = StyleSheet.create({
 TopicTile.propTypes = {
   topic: PropTypes.object,
   changeBeforeVote: PropTypes.func,
+  changeAfterVote: PropTypes.func,
 };
