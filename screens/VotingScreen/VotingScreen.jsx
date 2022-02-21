@@ -22,7 +22,6 @@ const TopicTile = ({ topic, changeBeforeVote, changeAfterVote }) => {
 };
 
 const VotingScreen = () => {
-  const [topicsOrder, setTopicsOrder] = useState([]);
   const [topics, setTopics] = useState([
     { name: 'What is photography?', beforeVotes: {}, afterVotes: {} },
     {
